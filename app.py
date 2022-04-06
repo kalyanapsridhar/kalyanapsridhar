@@ -1,21 +1,17 @@
 from flask import Flask, render_template, request 
-# Flask is a application # used to run/serve our application
-
-# request is used to access the file which is uploaded by the user in out application # render_template is used for rendering the html pages import pickle # pickle is used for serializing and de-serializing Python object structures
+used for serializing and de-serializing Python object structures
 import pickle
 
+app=Flask (__name__)
 
-
-app=Flask (__name__) # our flask app
-
-@app.route('/') # rendering the html template def home():
+@app.route('/')
 def home():
-    return render_template( 'home.html') @app.route('/predict') # rendering the html template def index():
+    return render_template( 'home.html')
 @app.route('/predict')
 def index():
     return render_template("index.html")
 
-@app.route('/data_predict', methods=['GET', 'POST']) # route for our prediction def predict():
+@app.route('/data_predict', methods=['GET', 'POST'])
 def predict():
     
     model = pickle.load(open('gdp.pkl', 'rb'))
